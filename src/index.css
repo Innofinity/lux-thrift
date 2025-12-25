@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-background: 255 255 255;
+    --color-surface: 245 245 245;
+    --color-primary: 204 255 0;
+    /* Keep acid green but might need contrast check */
+    --color-text-base: 0 0 0;
+    --color-text-muted: 82 82 82;
+    --color-border: 229 229 229;
+  }
+
+  .dark {
+    --color-background: 5 5 5;
+    --color-surface: 26 26 26;
+    --color-primary: 204 255 0;
+    --color-text-base: 255 255 255;
+    --color-text-muted: 156 163 175;
+    --color-border: 255 255 255;
+    /* Opacity will be handled in utility */
+  }
+
+  body {
+    @apply bg-background text-text-base font-sans antialiased transition-colors duration-300;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+  }
+
+  .glass {
+    @apply bg-surface/50 backdrop-blur-lg border border-border;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
